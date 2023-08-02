@@ -1,1 +1,2 @@
-shell tasks
+Shell, basics priject 
+
