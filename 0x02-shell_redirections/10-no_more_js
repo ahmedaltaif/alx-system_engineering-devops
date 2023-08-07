@@ -1,2 +1,2 @@
 #!/bin/bash
-find . -maxdepth 2 -name "*.js" -delete
+find . -name "*.js" -delete
