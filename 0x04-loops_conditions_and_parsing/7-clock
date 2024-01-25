@@ -12,5 +12,5 @@ do
         (( munit+=1 ))
     done
     (( clock+=1 ))
-    munit=0
+    munit=1
 done
