@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# displays Best School 10 times and hi in the 9.
+
+munit=1
+clock=0
+while [ $clock -lt 13 ]
+do
+    echo "Hour: $clock"
+    while [ $munit -lt 60 ]
+    do
+        echo "$munit"
+        (( munit+=1 ))
+    done
+    (( clock+=1 ))
+    munit=0
+done
