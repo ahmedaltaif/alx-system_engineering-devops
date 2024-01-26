@@ -18,13 +18,13 @@ int main(void)
 	{
 		pid = fork();
 		if (pid)
-        {
+		{
 			printf("Zombie process created, PID: %a\n", pid);
-        }
+		}
 		else
-        {
+		{
 			exit(0);
-        }
+		}
 		a++;
 	}
 	sleep(100);
