@@ -18,4 +18,5 @@ do
     trap 'echo "I hate the kill command"' SIGTERM
     trap 'echo "Y U no love me?!"' SIGINT
     trap 'sudo rm -f /var/run/myscript.pid; exit"' SIGQUIT
+    trap 'sudo rm -f /var/run/myscript.pid; exit"' SIGTERM
 done
