@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# add custom HTTP header to nginx 
 apt update
 apt install nginx -y
 sed -i "13i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
