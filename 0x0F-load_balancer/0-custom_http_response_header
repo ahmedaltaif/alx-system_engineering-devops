@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+apt-get install nginx -y
+sed -i "11i\\\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/nginx.conf
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
+service nginx restart
