@@ -9,8 +9,10 @@ import requests
 def number_of_subscribers(subreddit):
     """ return the numer of subscribers """
 
-    url = 'https://www.reddit.com/r/{}/about.json'.format(subreddit)
-    headers = {'User-agent': '0X16API_ADVANCED'}
+    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
+    headers = {
+        'User-agent': '0X16API_ADVANCED'
+        }
     response = requests.get(url, headers=headers, allow_redirects=False)
     if response.status_code == 404:
         return 0
