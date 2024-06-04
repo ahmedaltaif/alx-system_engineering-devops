@@ -20,8 +20,8 @@ def top_ten(subreddit):
         return 0
     result = response.json()
     data = result['data']['children']
-    for i in data:
-            title = listing.get('data').get('title')
+    for listt in data:
+            title = listt.get('data').get('title')
             print(title)
 
     
