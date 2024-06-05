@@ -6,11 +6,16 @@ import requests
 def number_of_subscribers(subreddit):
     """ Function that queries the Reddit API """
 
-    headers = {'User-agent': '0X16API_ADVANCED'}
-    URL = 'https://www.reddit.com/r/{}/about.json'
-    response = requests.get(URL.format(subreddit),
-                            headers=headers, allow_redirects=False)
-    if response.status_code == 404:
-        return 0
-    results = response.json().get("data")
-    return results.get("subscribers")
+    req = requests.get(
+        "https://www.reddit.com/r/{}/hot.json".format(subreddit),
+        headers={"User-Agent": "Custom"},
+        params={"limit": 10},
+    )
+
+    if req.status_code == 200:
+        for get_data in req.json().get("data").get("children"):
+            dat = get_data.get("data")
+            title = dat.get("title")
+            print(title)
+    else:
+        print(None)
