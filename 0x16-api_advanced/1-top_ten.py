@@ -9,20 +9,22 @@ import requests
 def top_ten(subreddit):
     """ return 10 hot posts listed for a given subreddit """
 
-    url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
     headers = {'User-agent': '0X16API_ADVANCED'}
     params = {
         "limit": 10
     }
 
-    response = requests.get(url, headers=headers, params=params, allow_redirects=False)
-    if response.status_code != 200:
-        print("None")
-        return 0
-    result = response.json()
-    data = result['data']['children']
-    for listt in data:
-            title = listt.get('data').get('title')
+    response = requests.get(url, headers=headers,
+                            params=params, allow_redirects=False)
+    try:
+        response = requests.get(url,
+                                headers=headers,
+                                params=params,
+                                allow_redirects=False).json()
+        data = response['data']['children']
+        for listing in data:
+            title = listing.get('data').get('title')
             print(title)
-
-    
+    except Exception:
+        print('None')
