@@ -26,5 +26,5 @@ def top_ten(subreddit):
         for listing in data:
             title = listing.get('data').get('title')
             print(title)
-    except Exception:
+    except requests.exceptions.RequestException:
         print('None')
