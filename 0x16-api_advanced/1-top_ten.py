@@ -7,37 +7,19 @@ import requests
 
 
 def top_ten(subreddit):
-    """ Function that prints the titles """
+    """ return 10 hot posts listed for a given subreddit """
 
-    base_url = 'https://www.reddit.com'
-    sort = 'top'
-    limit = 10
-    url = '{}/r/{}/.json?sort={}&limit={}'.format(
-        base_url, subreddit, sort, limit)
+    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {
-        'User-Agent':
-        '0X16API_ADVANCED'
+        "User-Agent": "0X16API_ADVANCED"
     }
-
-    try:
-        response = requests.get(url, headers=headers, allow_redirects=False)
-        response.raise_for_status()
-
-        data = response.json()
-        posts = data.get('data', {}).get('children', [])
-        
-        if not posts:
-            print('None')
-        else:
-            for post in posts:
-                print(post['data']['title'])
-    
-    except requests.exceptions.RequestException:
-        # Handle HTTP errors
-        print('None')
-    except ValueError:
-        # Handle JSON decode error
-        print('None')
-    except KeyError:
-        # Handle missing keys in the response
-        print('None')
+    params = {
+        "limit": 10
+    }
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
+    if response.status_code == 404:
+        print("None")
+        return
+    results = response.json().get("data")
+    [print(c.get("data").get("title")) for c in results.get("children")]
