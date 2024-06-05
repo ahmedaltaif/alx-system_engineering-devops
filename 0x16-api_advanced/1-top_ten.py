@@ -7,24 +7,24 @@ import requests
 
 
 def top_ten(subreddit):
-    """ return 10 hot posts listed for a given subreddit """
+    """ Function that prints the titles """
 
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
-    headers = {'User-agent': '0X16API_ADVANCED'}
-    params = {
-        "limit": 10
+    base_url = 'https://www.reddit.com'
+    sort = 'top'
+    limit = 10
+    url = '{}/r/{}/.json?sort={}&limit={}'.format(
+        base_url, subreddit, sort, limit)
+    headers = {
+        'User-Agent':
+        '0X16API_ADVANCED'
     }
-
-    response = requests.get(url, headers=headers,
-                            params=params, allow_redirects=False)
-    try:
-        response = requests.get(url,
-                                headers=headers,
-                                params=params,
-                                allow_redirects=False).json()
-        data = response['data']['children']
-        for listing in data:
-            title = listing.get('data').get('title')
-            print(title)
-    except :
-        print('None')
+    response = requests.get(
+        url,
+        headers=headers,
+        allow_redirects=False
+    )
+    if response.status_code == 200:
+        for post in response.json()['data']['children'][0:10]:
+            print(post['data']['title'])
+    else:
+        print(None)
