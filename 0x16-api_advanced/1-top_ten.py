@@ -18,7 +18,7 @@ def top_ten(subreddit):
         'User-Agent':
         '0X16API_ADVANCED'
     }
-    
+
     try:
         response = requests.get(url, headers=headers, allow_redirects=False)
         response.raise_for_status()
