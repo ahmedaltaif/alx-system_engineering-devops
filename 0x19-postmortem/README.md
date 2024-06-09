@@ -1,3 +1,6 @@
+![Example Image](images/port.jpeg)
+
+
 incident report for the recent website outage
 
 JUNE 18, 2023
