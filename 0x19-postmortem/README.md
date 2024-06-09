@@ -1,5 +1,6 @@
-![Example Image](images/port.jpeg)
-
+<p align="center">
+  <img src="images/port.jpeg" alt="Example Image" />
+</p>
 
 incident report for the recent website outage
 
